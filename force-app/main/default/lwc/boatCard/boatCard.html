@@ -1,0 +1,38 @@
+<template>
+    <lightning-tabset variant="scoped">
+        <lightning-tab label="Details">
+            <lightning-card icon-name="standard:apex_plugin">
+                <template if:true={recordId}>
+                    <span slot="title">{boatName}</span>
+                    <lightning-button-icon icon-name="utility:expand_alt" slot="actions"
+                        onclick={handleNavigateToRecord}>
+                    </lightning-button-icon>
+                    <div class="slds-m-horizontal_medium">
+                        <img if:true={boatPictureUrl} src={boatPictureUrl} class="boat" alt="boat picture" />
+                        <lightning-record-view-form record-id={recordId} onload={handleRecordLoaded}
+                            object-api-name="Boat__c" density="compact">
+                            <lightning-output-field field-name={typeField}></lightning-output-field>
+                            <lightning-output-field field-name={contactField}></lightning-output-field>
+                            <lightning-output-field field-name={lengthField}></lightning-output-field>
+                            <lightning-output-field field-name={priceField}></lightning-output-field>
+                            <lightning-output-field field-name={builtyearField}></lightning-output-field>
+                            <lightning-output-field field-name={geolocation}></lightning-output-field>
+                        </lightning-record-view-form>
+                    </div>                   
+                </template>
+                <template if:false={recordId}>
+                    <span class="slds-align_absolute-center">
+                        Please select a boat to see its Details!
+                    </span>
+                </template>
+            </lightning-card>
+        </lightning-tab>
+        <!-- <lightning-tab label="Reviews">
+            <c-boat-show-reviews ></c-boat-show-reviews>
+        </lightning-tab> -->
+        <lightning-tab label="Add Reviews">
+            <!-- <lightning-button label="Write a Review" onclick={navigateToNewReviewPage}></lightning-button> using navigationMixmin we can directly go to add page -->
+            <c-boat-add-review-form boat-id = {recordId}></c-boat-add-review-form>
+        </lightning-tab>
+    </lightning-tabset>
+</template>

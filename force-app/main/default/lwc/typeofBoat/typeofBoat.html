@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Boat Type" icon-name="standard:custom54">
+        <div class="slds-var-m-around_medium">
+            <!-- Show Type of boat when boat is loaded -->
+            <template if:true={boat.data}>
+                <lightning-record-form object-api-name="BoatType__c" record-id={BoatId} layout-type="Compact">
+                </lightning-record-form>
+                
+            </template>
+            <!-- Data failed to load -->
+            <template if:true={boat.error}>
+                <div class="slds-text-color_error">
+                    An error occurred while loading the boat record
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+    <lightning-card title="Boat Contact" icon-name="standard:contact">
+        <div class="slds-var-m-around_medium">
+            <!-- Show boat contact when boat is loaded -->
+            <template if:true={boat.data}>
+                <lightning-record-form object-api-name="Contact" record-id={ContactId} layout-type="Compact" mode="view">
+                </lightning-record-form>                
+            </template>
+            <!-- Data failed to load -->
+            <template if:true={boat.error}>
+                <div class="slds-text-color_error">
+                    An error occurred while loading the boat record
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
