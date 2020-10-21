@@ -8,8 +8,6 @@ export default class BoatSearchForm extends LightningElement {
     @track error = undefined;
     @track searchOptions;
     @wire(getBoatTypes)
-
-
     boatTypes({ error, data }) {
         if (data) {
             this.searchOptions = data.map((type) => {
