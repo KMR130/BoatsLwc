@@ -1,8 +1,8 @@
 <template>
-    <template for:each={Accounts.data} for:item="Account">
-        <lightning-layout-item key={Account.Id} padding="around-small" size="12" small-device-size="6"
-            medium-device-size="4" large-device-size="3">
-            {Account.Name}
-        </lightning-layout-item>
-    </template>
+<!----------------------------------Lwc Lazy Loading example------------------------------------------------>
+    <div style="height:500px">
+        <lightning-datatable key-field="Id" data={accounts} columns={columns} enable-infinite-loading
+            onloadmore={loadMoreData} hide-checkbox-column="true" show-row-number-column="true">
+        </lightning-datatable>
+    </div>
 </template>
