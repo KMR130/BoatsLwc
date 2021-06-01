@@ -4,26 +4,35 @@
             <p class="slds-p-horizontal_medium">Display records in paginated way </p>
             <br></br>
             <div style="height: 180px;">
-                <lightning-datatable 
-                    key-field="id"
-                    data={data}
-                    columns={columns}>
+                <lightning-datatable key-field="id" data={data} columns={columns}>
                 </lightning-datatable>
             </div>
         </div>
         <div class="slds-m-around_medium">
             <p class="slds-m-vertical_medium content" style="text-align: center;">
-                     Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records.
-                     Page {page} of {totalPage}. </p>
+                Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records.
+                Page {page} of {totalPage}. </p>
             <lightning-layout>
                 <lightning-layout-item>
-                    <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}></lightning-button>
+                    <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                    </lightning-button>
                 </lightning-layout-item>
                 <lightning-layout-item flexibility="grow"></lightning-layout-item>
                 <lightning-layout-item>
-                    <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right" onclick={nextHandler}></lightning-button>
+                    <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                        onclick={nextHandler}></lightning-button>
                 </lightning-layout-item>
             </lightning-layout>
+        </div>
+        <div class="slds-grid" style="width: 30%;">
+            <div class="slds-col">
+                <lightning-input type="checkbox" class="slds-m-vertical_x-small" label="Surveys" name="Survey"
+                    checked={surveyOptOut} onchange={changeSurveyOptOut}>
+                </lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-helptext content="SURVEYS_INFO_LABEL"></lightning-helptext>
+            </div>
         </div>
     </lightning-card>
 </template>
